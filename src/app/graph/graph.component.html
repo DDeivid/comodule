@@ -1,0 +1,30 @@
+<mat-card class="card" [class.loading]="!isLoaded">
+  <mat-progress-spinner *ngIf="!isLoaded" mode="indeterminate" class="spinner" diameter="60"></mat-progress-spinner>
+  <mat-card-title class="card__title">
+    Unique modules count
+  </mat-card-title>
+  <div id="chartContainer" class="chart" style="height: 370px; width: 100%;"></div>
+  <mat-slider class="slider" min="2" max="60" step="1" value="{{timeFrame}}" thumbLabel (input)="changeTimeframe($event)"></mat-slider>
+</mat-card>
+
+<mat-card class="card card--log" [class.card--hidden]="!isLoaded">
+  <table mat-table [dataSource]="graphData" class="table">
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Time </th>
+        <td mat-cell *matCellDef="let point"> {{point.date | date: 'HH:mm:ss'}} </td>
+      </ng-container>
+
+    <ng-container matColumnDef="uniqueCount">
+      <th mat-header-cell *matHeaderCellDef> Unique Modules </th>
+      <td mat-cell *matCellDef="let point"> {{point.uniqueCount}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="totalCount">
+      <th mat-header-cell *matHeaderCellDef> Total Modules </th>
+      <td mat-cell *matCellDef="let point"> {{point.totalCount}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>

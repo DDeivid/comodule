@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+
+$indigo: mat-palette($mat-indigo);
+$deep-orange: mat-palette($mat-deep-orange);
+$gray: mat-palette($mat-gray);
+
+$primary: mat-color($indigo, 900);
+$primary-light: mat-color($indigo, 600);
+$accent: mat-color($deep-orange, 600);
+
+$white: #fff;
+$white-dark: mat-color($gray, 200);
+
+$black: #000;
